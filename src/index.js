@@ -11,5 +11,11 @@ import KuromojiAnalyzer from "kuroshiro-analyzer-kuromoji";
     const result = await kuroshiro.convert(txt, {mode: "furigana", to: "hiragana"});
 
     console.log(result);
-    clipboard.writeSync(result);
+
+    try {
+        clipboard.writeSync(result);
+    } catch (e) {
+        console.error("Invalid Clipboard Access: ");
+        console.error(e);
+    }
 })()
